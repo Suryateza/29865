@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Compatibility Checker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <style>body {
+    font-family: 'Arial', sans-serif;
+    background: #ffe6e6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.user-input {
+    margin: 10px;
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ff9999;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff4d4d;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ff3333;
+}
+
+@media(max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+    }
+}</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Love Compatibility Checker</h1>
+        <div class="form-container">
+            <form id="compatibilityForm">
+                <!-- User 1 Inputs -->
+                <div class="user-input">
+                    <h2>Person 1</h2>
+                    <input type="text" placeholder="Name" id="name1" required>
+                    <input type="date" id="dob1" required>
+                    <input type="time" id="time1">
+                    <input type="text" placeholder="Place of Birth" id="place1">
+                </div>
+                <!-- User 2 Inputs -->
+                <div class="user-input">
+                    <h2>Person 2</h2>
+                    <input type="text" placeholder="Name" id="name2" required>
+                    <input type="date" id="dob2" required>
+                    <input type="time" id="time2">
+                    <input type="text" placeholder="Place of Birth" id="place2">
+                </div>
+                <button type="submit">Check Compatibility</button>
+            </form>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('compatibilityForm');
+        const resultDiv = document.getElementById('result');
+    
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Gather data (in a real scenario, you'd validate and process this data)
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+            
+            // For now, we'll use Math.random for a compatibility score
+            const compatibilityScore = Math.floor(Math.random() * 101);
+            
+            // Determine compatibility message
+            let message;
+            if (compatibilityScore > 80) {
+                message = "You are a match made in heaven!";
+            } else if (compatibilityScore > 50) {
+                message = "There's definitely potential here!";
+            } else {
+                message = "Well, opposites do attract... sometimes.";
+            }
+    
+            // Display result
+            resultDiv.innerHTML = `
+                <p>${name1} and ${name2}, your compatibility score is:</p>
+                <h2>${compatibilityScore}%</h2>
+                <p>${message}</p>
+            `;
+        });
+    });</script>
+</body>
+</html>
