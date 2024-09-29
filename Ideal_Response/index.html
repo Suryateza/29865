@@ -180,6 +180,9 @@
                 margin: 10px 0;
             }
         }
+        #compatibilityForm{
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -223,18 +226,16 @@
             </div>
 
             <button type="button" id="checkBtn">Check Compatibility</button>
-        </form>
-
-        <div id="resultSection" class="result-section">
-            <h3>Your Compatibility Score</h3>
-            <div id="resultContainer" class="result-container">
-                <div class="person" id="person1Result"></div>
-                <div class="person" id="person2Result"></div>
-            </div>
-            <p id="resultMessage"></p>
-        </div>
+        </form>   
     </div>
-
+    <div id="resultSection" class="result-section">
+        <h3>Your Compatibility Score</h3>
+        <div id="resultContainer" class="result-container">
+            <div class="person" id="person1Result"></div>
+            <div class="person" id="person2Result"></div>
+        </div>
+        <p id="resultMessage"></p>
+    </div>
     <script>
         document.getElementById('checkBtn').addEventListener('click', function() {
             const name1 = document.getElementById('name1').value;
