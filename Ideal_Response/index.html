@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Compatibility Checker</title>
+    <style>* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ffe5e5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    h1 {
+        color: #ff6b6b;
+    }
+    
+    .user-input {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #ff6b6b;
+    }
+    
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        background-color: #ff6b6b;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    button:hover {
+        background-color: #ff4c4c;
+    }
+    
+    .result-section {
+        display: none;
+        margin-top: 20px;
+    }
+    
+    h3 {
+        color: #ff6b6b;
+    }
+    
+    p {
+        font-size: 18px;
+        color: #333;
+    }
+    
+    @media (max-width: 600px) {
+        .container {
+            padding: 15px;
+        }
+    
+        h1 {
+            font-size: 24px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Love Compatibility Checker</h1>
+        <form id="compatibilityForm">
+            <div class="user-input">
+                <h2>Person 1 Details</h2>
+                <label for="name1">Name:</label>
+                <input type="text" id="name1" required>
+                <label for="dob1">Date of Birth:</label>
+                <input type="date" id="dob1" required>
+                <label for="tob1">Time of Birth:</label>
+                <input type="time" id="tob1" required>
+                <label for="pob1">Place of Birth:</label>
+                <input type="text" id="pob1" required>
+            </div>
+
+            <div class="user-input">
+                <h2>Person 2 Details</h2>
+                <label for="name2">Name:</label>
+                <input type="text" id="name2" required>
+                <label for="dob2">Date of Birth:</label>
+                <input type="date" id="dob2" required>
+                <label for="tob2">Time of Birth:</label>
+                <input type="time" id="tob2" required>
+                <label for="pob2">Place of Birth:</label>
+                <input type="text" id="pob2" required>
+            </div>
+
+            <button type="button" id="checkBtn">Check Compatibility</button>
+        </form>
+
+        <div id="resultSection" class="result-section">
+            <h3>Your Compatibility Score</h3>
+            <p id="resultMessage"></p>
+        </div>
+    </div>
+
+    <script> document.getElementById('checkBtn').addEventListener('click', function() {
+        const name1 = document.getElementById('name1').value;
+        const dob1 = document.getElementById('dob1').value;
+        const tob1 = document.getElementById('tob1').value;
+        const pob1 = document.getElementById('pob1').value;
+    
+        const name2 = document.getElementById('name2').value;
+        const dob2 = document.getElementById('dob2').value;
+        const tob2 = document.getElementById('tob2').value;
+        const pob2 = document.getElementById('pob2').value;
+    
+        if (name1 && dob1 && tob1 && pob1 && name2 && dob2 && tob2 && pob2) {
+            // Generate random compatibility percentage
+            const compatibilityScore = Math.floor(Math.random() * 101);
+    
+            // Display result section and message
+            const resultSection = document.getElementById('resultSection');
+            const resultMessage = document.getElementById('resultMessage');
+    
+            resultSection.style.display = 'block';
+            resultMessage.innerHTML = `${name1} and ${name2}, your love compatibility is ${compatibilityScore}%.`;
+    
+            // Personalized message based on score
+            if (compatibilityScore > 80) {
+                resultMessage.innerHTML += ' You two are a match made in heaven!';
+            } else if (compatibilityScore > 50) {
+                resultMessage.innerHTML += ' You have strong potential to build something beautiful together.';
+            } else {
+                resultMessage.innerHTML += ' Love might require more effort, but it can still be wonderful!';
+            }
+        } else {
+            alert('Please fill in all fields.');
+        }
+    });
+    </script>
+</body>
+</html>
