@@ -4,91 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Compatibility Checker</title>
-    <style>* {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #ffe5e5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    
-    .container {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
-        width: 100%;
-        text-align: center;
-    }
-    
-    h1 {
-        color: #ff6b6b;
-    }
-    
-    .user-input {
-        margin-bottom: 20px;
-    }
-    
-    label {
-        display: block;
-        font-weight: bold;
-        margin-top: 10px;
-        color: #ff6b6b;
-    }
-    
-    input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
-    button {
-        background-color: #ff6b6b;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-    
-    button:hover {
-        background-color: #ff4c4c;
-    }
-    
-    .result-section {
-        display: none;
-        margin-top: 20px;
-    }
-    
-    h3 {
-        color: #ff6b6b;
-    }
-    
-    p {
-        font-size: 18px;
-        color: #333;
-    }
-    
-    @media (max-width: 600px) {
+    <style>
+        /* Existing styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: backgroundFade 5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundFade {
+            0% { background-color: #ffe5e5; }
+            100% { background-color: #ffd1d1; }
+        }
+        
         .container {
-            padding: 15px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeIn 1s forwards, slideIn 0.5s ease-out forwards;
         }
-    
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            to { transform: translateY(0); }
+        }
+
         h1 {
-            font-size: 24px;
+            color: #ff6b6b;
+            animation: textColorPulse 3s ease-in-out infinite;
         }
-    }
+
+        @keyframes textColorPulse {
+            0% { color: #ff6b6b; }
+            100% { color: #ff4c4c; }
+        }
+
+        .user-input {
+            margin-bottom: 20px;
+            animation: fadeIn 1s 0.5s forwards;
+            opacity: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ff6b6b;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .gender {
+            margin-top: 10px;
+        }
+
+        .gender label {
+            font-weight: normal;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            animation: bounce 1.5s infinite;
+        }
+
+        button:hover {
+            background-color: #ff4c4c;
+            animation: bounceHover 0.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes bounceHover {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards, slideInResult 0.5s ease-out forwards;
+        }
+
+        @keyframes slideInResult {
+            to { transform: translateY(0); }
+        }
+
+        h3 {
+            color: #ff6b6b;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s forwards;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -105,6 +171,12 @@
                 <input type="time" id="tob1" required>
                 <label for="pob1">Place of Birth:</label>
                 <input type="text" id="pob1" required>
+                <div class="gender">
+                    <label>Gender:</label>
+                    <label><input type="radio" name="gender1" value="male" required> Male</label>
+                    <label><input type="radio" name="gender1" value="female"> Female</label>
+                    <label><input type="radio" name="gender1" value="other"> Other</label>
+                </div>
             </div>
 
             <div class="user-input">
@@ -117,6 +189,12 @@
                 <input type="time" id="tob2" required>
                 <label for="pob2">Place of Birth:</label>
                 <input type="text" id="pob2" required>
+                <div class="gender">
+                    <label>Gender:</label>
+                    <label><input type="radio" name="gender2" value="male" required> Male</label>
+                    <label><input type="radio" name="gender2" value="female"> Female</label>
+                    <label><input type="radio" name="gender2" value="other"> Other</label>
+                </div>
             </div>
 
             <button type="button" id="checkBtn">Check Compatibility</button>
@@ -128,40 +206,43 @@
         </div>
     </div>
 
-    <script> document.getElementById('checkBtn').addEventListener('click', function() {
-        const name1 = document.getElementById('name1').value;
-        const dob1 = document.getElementById('dob1').value;
-        const tob1 = document.getElementById('tob1').value;
-        const pob1 = document.getElementById('pob1').value;
-    
-        const name2 = document.getElementById('name2').value;
-        const dob2 = document.getElementById('dob2').value;
-        const tob2 = document.getElementById('tob2').value;
-        const pob2 = document.getElementById('pob2').value;
-    
-        if (name1 && dob1 && tob1 && pob1 && name2 && dob2 && tob2 && pob2) {
-            // Generate random compatibility percentage
-            const compatibilityScore = Math.floor(Math.random() * 101);
-    
-            // Display result section and message
-            const resultSection = document.getElementById('resultSection');
-            const resultMessage = document.getElementById('resultMessage');
-    
-            resultSection.style.display = 'block';
-            resultMessage.innerHTML = `${name1} and ${name2}, your love compatibility is ${compatibilityScore}%.`;
-    
-            // Personalized message based on score
-            if (compatibilityScore > 80) {
-                resultMessage.innerHTML += ' You two are a match made in heaven!';
-            } else if (compatibilityScore > 50) {
-                resultMessage.innerHTML += ' You have strong potential to build something beautiful together.';
+    <script>
+        document.getElementById('checkBtn').addEventListener('click', function() {
+            const name1 = document.getElementById('name1').value;
+            const dob1 = document.getElementById('dob1').value;
+            const tob1 = document.getElementById('tob1').value;
+            const pob1 = document.getElementById('pob1').value;
+            const gender1 = document.querySelector('input[name="gender1"]:checked').value;
+
+            const name2 = document.getElementById('name2').value;
+            const dob2 = document.getElementById('dob2').value;
+            const tob2 = document.getElementById('tob2').value;
+            const pob2 = document.getElementById('pob2').value;
+            const gender2 = document.querySelector('input[name="gender2"]:checked').value;
+
+            if (name1 && dob1 && tob1 && pob1 && gender1 && name2 && dob2 && tob2 && pob2 && gender2) {
+                // Generate random compatibility percentage
+                const compatibilityScore = Math.floor(Math.random() * 101);
+
+                // Display result section and message
+                const resultSection = document.getElementById('resultSection');
+                const resultMessage = document.getElementById('resultMessage');
+
+                resultSection.style.display = 'block';
+                resultMessage.innerHTML = `${name1} (${gender1}) and ${name2} (${gender2}), your love compatibility is ${compatibilityScore}%.`;
+
+                // Personalized message based on score
+                if (compatibilityScore > 80) {
+                    resultMessage.innerHTML += ' You two are a match made in heaven!';
+                } else if (compatibilityScore > 50) {
+                    resultMessage.innerHTML += ' You have strong potential to build something beautiful together.';
+                } else {
+                    resultMessage.innerHTML += ' Love might require more effort, but it can still be wonderful!';
+                }
             } else {
-                resultMessage.innerHTML += ' Love might require more effort, but it can still be wonderful!';
+                alert('Please fill in all fields.');
             }
-        } else {
-            alert('Please fill in all fields.');
-        }
-    });
+        });
     </script>
 </body>
 </html>
