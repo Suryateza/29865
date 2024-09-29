@@ -8,13 +8,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Lobster|Montserrat|Raleway" rel="stylesheet">
   <style>
+    /* Body and background styles */
     body {
       background-image: -webkit-linear-gradient(65deg, #c72c41 70%, #212121 30%);
       background-color: #c7004c;
       color: #ee4266;
       font-family: 'Lobster', cursive;
     }
-
+    
+    /* Calculator container styling */
     .calculator {
       padding: 50px 50px 20px 50px;
       text-align: center;
@@ -23,19 +25,21 @@
       background-color: #211717;
       width: 50%;
     }
-
+    
+    /* Input container layout */
     .input-container {
       display: flex;
       justify-content: space-between;
       margin-bottom: 15px;
     }
-
+    
+    /* Input box styling */
     .name-box {
       padding: 20px 40px;
       width: 40%;
     }
-
-    /* buttons */
+    
+    /* Button styles */
     .buttons {
       color: #ffd7e8;
       background-color: #ffaaaa;
@@ -48,46 +52,47 @@
       opacity: 0.5;
       font-size: 1rem;
     }
-
+    
     .buttons:hover {
       box-shadow: 5px 3px #bd245f;
       opacity: 1;
       color: #ee4266;
     }
-
-    /* Social Media */
+    
+    /* Social media icon styles */
     .social-media {
       opacity: 0.5;
       cursor: pointer;
       padding: 10px 3px 0 4px;
     }
-
+    
     .social-media:hover {
       opacity: 1;
     }
-
+    
+    /* Link styles */
     a {
       color: #ee4266;
     }
-
-    /* copy right  */
+    
+    /* Footer and notice styles */
     p {
       opacity: 1;
       font-size: 1rem;
     }
-
+    
     #notice {
       opacity: 0.5;
       font-size: .8rem;
     }
-
-    /* Media Query */
+    
+    /* Responsive design */
     @media (max-width: 600px) {
       .buttons {
         width: 30%;
         border-radius: 5px;
       }
-
+    
       .calculator {
         width: 60%;
         padding: 10px 20px 10px 10px;
@@ -143,13 +148,14 @@
   </div>
 
   <script>
+    // Love compatibility calculation function
     var loveCalculator = function () {
       var yourName = document.getElementById("firstname").value;
       var loversName = document.getElementById("lovername").value;
 
-      var loveScore = Math.random() * 100;
-      var loveFinal = Math.round(loveScore);
-      var compatibilityMessage = "";
+      var loveScore = Math.random() * 100; // Generate random love score
+      var loveFinal = Math.round(loveScore); // Round the score
+      var compatibilityMessage = ""; // Message placeholder
 
       // Determine compatibility message based on score
       if (loveFinal >= 90) {
@@ -164,14 +170,15 @@
         compatibilityMessage = "💔 Not the best match. It might be worth exploring other options.";
       }
 
+      // Display result
       document.getElementById("lovefinal").innerHTML = yourName + " and " + loversName + ", your compatibility score is " + loveFinal + "%. " + compatibilityMessage;
     };
 
+    // Reset function for clearing input fields and message
     function resetFunction() {
-      document.getElementById("loveForm").reset();
+      document.getElementById("love-calculator").reset();
       document.getElementById("lovefinal").innerHTML = "Calculate your love compatibility score";
     }
   </script>
 </body>
-
 </html>
