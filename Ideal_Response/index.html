@@ -1,286 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Compatibility Checker</title>
-    <style>
-        /* Existing styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <title>Love Compatibility Checker</title>
+  <link rel="shortcut icon" href="/heart.ico">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Lobster|Montserrat|Raleway" rel="stylesheet">
+  <style>
+    body {
+      background-image: -webkit-linear-gradient(65deg, #c72c41 70%, #212121 30%);
+      background-color: #c7004c;
+      color: #ee4266;
+      font-family: 'Lobster', cursive;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffe5e5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            animation: backgroundFade 5s ease-in-out infinite alternate;
-        }
+    .calculator {
+      padding: 50px 50px 20px 50px;
+      text-align: center;
+      margin: auto;
+      margin-top: 100px;
+      background-color: #211717;
+      width: 50%;
+    }
 
-        @keyframes backgroundFade {
-            0% { background-color: #ffe5e5; }
-            100% { background-color: #ffd1d1; }
-        }
+    .input-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
 
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: fadeIn 1s forwards, slideIn 0.5s ease-out forwards;
-        }
+    .name-box {
+      padding: 20px 40px;
+      width: 40%;
+    }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+    /* buttons */
+    .buttons {
+      color: #ffd7e8;
+      background-color: #ffaaaa;
+      border: solid;
+      border-color: #ee4266;
+      cursor: pointer;
+      margin: 10px 10px;
+      padding: 10px 20px;
+      position: relative;
+      opacity: 0.5;
+      font-size: 1rem;
+    }
 
-        @keyframes slideIn {
-            to { transform: translateY(0); }
-        }
+    .buttons:hover {
+      box-shadow: 5px 3px #bd245f;
+      opacity: 1;
+      color: #ee4266;
+    }
 
-        h1 {
-            color: #ff6b6b;
-            animation: textColorPulse 3s ease-in-out infinite;
-        }
+    /* Social Media */
+    .social-media {
+      opacity: 0.5;
+      cursor: pointer;
+      padding: 10px 3px 0 4px;
+    }
 
-        @keyframes textColorPulse {
-            0% { color: #ff6b6b; }
-            100% { color: #ff4c4c; }
-        }
+    .social-media:hover {
+      opacity: 1;
+    }
 
-        .user-input {
-            margin-bottom: 20px;
-            animation: fadeIn 1s 0.5s forwards;
-            opacity: 0;
-        }
+    a {
+      color: #ee4266;
+    }
 
-        label {
-            display: block;
-            font-weight: bold;
-            margin-top: 10px;
-            color: #ff6b6b;
-        }
+    /* copy right  */
+    p {
+      opacity: 1;
+      font-size: 1rem;
+    }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
+    #notice {
+      opacity: 0.5;
+      font-size: .8rem;
+    }
 
-        input:focus {
-            border-color: #ff6b6b;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-        }
+    /* Media Query */
+    @media (max-width: 600px) {
+      .buttons {
+        width: 30%;
+        border-radius: 5px;
+      }
 
-        .gender {
-            margin-top: 10px;
-        }
-
-        .gender label {
-            font-weight: normal;
-            margin-right: 10px;
-        }
-
-        button {
-            background-color: #ff6b6b;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            animation: bounce 1.5s infinite;
-        }
-
-        button:hover {
-            background-color: #ff4c4c;
-            animation: bounceHover 0.5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes bounceHover {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .result-section {
-            display: none;
-            margin-top: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s forwards, slideInResult 0.5s ease-out forwards;
-        }
-
-        @keyframes slideInResult {
-            to { transform: translateY(0); }
-        }
-
-        h3 {
-            color: #ff6b6b;
-            opacity: 0;
-            animation: fadeIn 1s 1s forwards;
-        }
-
-        .result-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 1s 1.5s forwards;
-        }
-
-        .person {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ff6b6b;
-            border-radius: 5px;
-            margin: 0 10px;
-            background-color: #fff;
-        }
-
-        p {
-            font-size: 18px;
-            color: #333;
-            opacity: 0;
-            animation: fadeIn 1s 1.5s forwards;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .result-container {
-                flex-direction: column;
-            }
-
-            .person {
-                margin: 10px 0;
-            }
-        }
-        #compatibilityForm{
-            display: flex;
-        }
-    </style>
+      .calculator {
+        width: 60%;
+        padding: 10px 20px 10px 10px;
+        margin-top: 50px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Love Compatibility Checker</h1>
-        <form id="compatibilityForm">
-            <div class="user-input">
-                <h2>Person 1 Details</h2>
-                <label for="name1">Name:</label>
-                <input type="text" id="name1" required>
-                <label for="dob1">Date of Birth:</label>
-                <input type="date" id="dob1" required>
-                <label for="tob1">Time of Birth:</label>
-                <input type="time" id="tob1" required>
-                <label for="pob1">Place of Birth:</label>
-                <input type="text" id="pob1" required>
-                <div class="gender">
-                    <label>Gender:</label>
-                    <label><input type="radio" name="gender1" value="male" required> Male</label>
-                    <label><input type="radio" name="gender1" value="female"> Female</label>
-                    <label><input type="radio" name="gender1" value="other"> Other</label>
-                </div>
-            </div>
+  <div id="love-calculator" class="calculator">
+    <h1>Welcome <i class="fas fa-heartbeat"></i></h1>
+    <h2 id="lovefinal">Calculate your love compatibility score</h2>
+    <p>Please enter details below</p>
 
-            <div class="user-input">
-                <h2>Person 2 Details</h2>
-                <label for="name2">Name:</label>
-                <input type="text" id="name2" required>
-                <label for="dob2">Date of Birth:</label>
-                <input type="date" id="dob2" required>
-                <label for="tob2">Time of Birth:</label>
-                <input type="time" id="tob2" required>
-                <label for="pob2">Place of Birth:</label>
-                <input type="text" id="pob2" required>
-                <div class="gender">
-                    <label>Gender:</label>
-                    <label><input type="radio" name="gender2" value="male" required> Male</label>
-                    <label><input type="radio" name="gender2" value="female"> Female</label>
-                    <label><input type="radio" name="gender2" value="other"> Other</label>
-                </div>
-            </div>
+    <div class="input-container">
+      <div>
+        <h2>Your Name</h2>
+        <input id="firstname" class="yourname name-box" type="text" name="firstName" placeholder="Your Name" required>
 
-            <button type="button" id="checkBtn">Check Compatibility</button>
-        </form>   
+        <h2>Your Date of Birth</h2>
+        <input id="dob1" class="name-box" type="date" name="dob" required>
+
+        <h2>Your Place of Birth</h2>
+        <input id="place1" class="name-box" type="text" name="place" placeholder="Your Place of Birth" required>
+
+        <h2>Your Time of Birth</h2>
+        <input id="time1" class="name-box" type="time" name="time" required>
+      </div>
+
+      <div>
+        <h2>Lover's Name</h2>
+        <input id="lovername" class="lovername name-box" type="text" name="lovername" placeholder="Lover's Name" required>
+
+        <h2>Lover's Date of Birth</h2>
+        <input id="dob2" class="name-box" type="date" name="dob" required>
+
+        <h2>Lover's Place of Birth</h2>
+        <input id="place2" class="name-box" type="text" name="place" placeholder="Lover's Place of Birth" required>
+
+        <h2>Lover's Time of Birth</h2>
+        <input id="time2" class="name-box" type="time" name="time" required>
+      </div>
     </div>
-    <div id="resultSection" class="result-section">
-        <h3>Your Compatibility Score</h3>
-        <div id="resultContainer" class="result-container">
-            <div class="person" id="person1Result"></div>
-            <div class="person" id="person2Result"></div>
-        </div>
-        <p id="resultMessage"></p>
-    </div>
-    <script>
-        document.getElementById('checkBtn').addEventListener('click', function() {
-            const name1 = document.getElementById('name1').value;
-            const dob1 = document.getElementById('dob1').value;
-            const tob1 = document.getElementById('tob1').value;
-            const pob1 = document.getElementById('pob1').value;
-            const gender1 = document.querySelector('input[name="gender1"]:checked').value;
 
-            const name2 = document.getElementById('name2').value;
-            const dob2 = document.getElementById('dob2').value;
-            const tob2 = document.getElementById('tob2').value;
-            const pob2 = document.getElementById('pob2').value;
-            const gender2 = document.querySelector('input[name="gender2"]:checked').value;
+    <button id="love-button" onclick="loveCalculator()" class="buttons"><i class="fas fa-heart"></i> Check Compatibility</button>
+    <button onclick="resetFunction()" class="buttons"><i class="fas fa-heart-broken"></i> Reset</button>
 
-            if (name1 && dob1 && tob1 && pob1 && gender1 && name2 && dob2 && tob2 && pob2 && gender2) {
-                // Generate random compatibility percentage
-                const compatibilityScore = Math.floor(Math.random() * 101);
+    <footer>
+      <a href="https://www.linkedin.com/in/tylerbakker35699864"><i class="social-media fab fa-1x fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/traizon_webdev/"><i class="social-media fab fa-1x fa-instagram"></i></a>
+    </footer>
+  </div>
 
-                // Display result section and message
-                const resultSection = document.getElementById('resultSection');
-                const resultMessage = document.getElementById('resultMessage');
-                const person1Result = document.getElementById('person1Result');
-                const person2Result = document.getElementById('person2Result');
+  <script>
+    var loveCalculator = function () {
+      var yourName = document.getElementById("firstname").value;
+      var loversName = document.getElementById("lovername").value;
 
-                person1Result.innerHTML = `
-                    <h4>${name1}</h4>
-                    <p>Birth Date: ${dob1}</p>
-                    <p>Time of Birth: ${tob1}</p>
-                    <p>Place of Birth: ${pob1}</p>
-                    <p>Gender: ${gender1}</p>
-                `;
-                
-                person2Result.innerHTML = `
-                    <h4>${name2}</h4>
-                    <p>Birth Date: ${dob2}</p>
-                    <p>Time of Birth: ${tob2}</p>
-                    <p>Place of Birth: ${pob2}</p>
-                    <p>Gender: ${gender2}</p>
-                `;
+      var loveScore = Math.random() * 100;
+      var loveFinal = Math.round(loveScore);
+      var compatibilityMessage = "";
 
-                resultMessage.innerHTML = `Your compatibility score is <strong>${compatibilityScore}%</strong>.`;
-                
-                resultSection.style.display = 'block';
-            }
-        });
-    </script>
+      // Determine compatibility message based on score
+      if (loveFinal >= 90) {
+        compatibilityMessage = "😍 Match made in heaven! You two are perfect for each other!";
+      } else if (loveFinal >= 75) {
+        compatibilityMessage = "🥰 Great compatibility! A lovely relationship awaits!";
+      } else if (loveFinal >= 50) {
+        compatibilityMessage = "😊 Good compatibility! With some effort, this can be a strong bond!";
+      } else if (loveFinal >= 25) {
+        compatibilityMessage = "😬 Some challenges ahead, but every relationship can work!";
+      } else {
+        compatibilityMessage = "💔 Not the best match. It might be worth exploring other options.";
+      }
+
+      document.getElementById("lovefinal").innerHTML = yourName + " and " + loversName + ", your compatibility score is " + loveFinal + "%. " + compatibilityMessage;
+    };
+
+    function resetFunction() {
+      document.getElementById("loveForm").reset();
+      document.getElementById("lovefinal").innerHTML = "Calculate your love compatibility score";
+    }
+  </script>
 </body>
+
 </html>
