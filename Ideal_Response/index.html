@@ -152,11 +152,11 @@
     var loveCalculator = function () {
       var yourName = document.getElementById("firstname").value;
       var loversName = document.getElementById("lovername").value;
-
+  
       var loveScore = Math.random() * 100; // Generate random love score
       var loveFinal = Math.round(loveScore); // Round the score
       var compatibilityMessage = ""; // Message placeholder
-
+  
       // Determine compatibility message based on score
       if (loveFinal >= 90) {
         compatibilityMessage = "😍 Match made in heaven! You two are perfect for each other!";
@@ -169,16 +169,27 @@
       } else {
         compatibilityMessage = "💔 Not the best match. It might be worth exploring other options.";
       }
-
+  
       // Display result
       document.getElementById("lovefinal").innerHTML = yourName + " and " + loversName + ", your compatibility score is " + loveFinal + "%. " + compatibilityMessage;
     };
-
+  
     // Reset function for clearing input fields and message
     function resetFunction() {
-      document.getElementById("love-calculator").reset();
+      // Clear input fields
+      document.getElementById("firstname").value = "";
+      document.getElementById("lovername").value = "";
+      document.getElementById("dob1").value = "";
+      document.getElementById("place1").value = "";
+      document.getElementById("time1").value = "";
+      document.getElementById("dob2").value = "";
+      document.getElementById("place2").value = "";
+      document.getElementById("time2").value = "";
+      
+      // Reset compatibility message
       document.getElementById("lovefinal").innerHTML = "Calculate your love compatibility score";
     }
   </script>
+  
 </body>
 </html>
